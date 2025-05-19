@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Rotas para as listas de tarefas
   resources :todo_lists do
     # Rotas aninhadas para os itens de cada lista
-    resources :items, only: [:create, :destroy, :update] do
+    resources :items, only: [ :create, :destroy, :update ] do
       member do
         patch :toggle_complete
       end

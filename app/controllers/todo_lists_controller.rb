@@ -1,5 +1,5 @@
 class TodoListsController < ApplicationController
-  before_action :set_todo_list, only: [:show, :edit, :update, :destroy]
+  before_action :set_todo_list, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @todo_lists = TodoList.all
@@ -19,7 +19,7 @@ class TodoListsController < ApplicationController
     @todo_list = TodoList.new(todo_list_params)
 
     if @todo_list.save
-      redirect_to @todo_list, notice: 'Lista de tarefas criada com sucesso.'
+      redirect_to @todo_list, notice: "Lista de tarefas criada com sucesso."
     else
       render :new
     end
@@ -27,7 +27,7 @@ class TodoListsController < ApplicationController
 
   def update
     if @todo_list.update(todo_list_params)
-      redirect_to @todo_list, notice: 'Lista de tarefas atualizada com sucesso.'
+      redirect_to @todo_list, notice: "Lista de tarefas atualizada com sucesso."
     else
       render :edit
     end
@@ -35,7 +35,7 @@ class TodoListsController < ApplicationController
 
   def destroy
     @todo_list.destroy
-    redirect_to todo_lists_url, notice: 'Lista de tarefas excluída com sucesso.'
+    redirect_to todo_lists_url, notice: "Lista de tarefas excluída com sucesso."
   end
 
   private
