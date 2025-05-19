@@ -1,0 +1,37 @@
+<div class="row mb-4">
+  <div class="col">
+    <h1>Minhas Listas de Tarefas</h1>
+  </div>
+  <div class="col-auto">
+    <%= link_to "Nova Lista", new_todo_list_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="row">
+  <% if @todo_lists.empty? %>
+    <div class="col-12">
+      <div class="alert alert-info">
+        Você ainda não tem nenhuma lista de tarefas. Crie uma nova!
+      </div>
+    </div>
+  <% else %>
+    <% @todo_lists.each do |todo_list| %>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100">
+          <div class="card-header">
+            <h5 class="card-title mb-0"><%= todo_list.title %></h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text"><%= truncate(todo_list.description, length: 100) %></p>
+            <p class="text-muted"><%= pluralize(todo_list.items.count, 'item') %></p>
+          </div>
+          <div class="card-footer bg-transparent d-flex justify-content-between">
+            <%= link_to "Ver", todo_list_path(todo_list), class: "btn btn-sm btn-primary" %>
+            <%= link_to "Editar", edit_todo_list_path(todo_list), class: "btn btn-sm btn-secondary" %>
+            <%= button_to "Excluir", todo_list_path(todo_list), method: :delete, class: "btn btn-sm btn-danger", form: { data: { turbo_confirm: "Tem certeza?" } } %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
