@@ -1,0 +1,46 @@
+<h2>Login</h2>
+
+<%= form_with url: login_path, method: :post do |form| %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, "Senha" %>
+    <%= form.password_field :password, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Entrar" %>
+  </div>
+<% end %>
+
+<div class="links">
+  <%= link_to "Esqueci minha senha", new_password_reset_path %><br />
+  <%= link_to "Reenviar e-mail de confirmação", "#", data: { bs_toggle: "modal", bs_target: "#resendConfirmationModal" } %><br />
+  Não tem uma conta? <%= link_to "Cadastre-se", signup_path %>
+</div>
+
+<!-- Modal para reenvio de e-mail de confirmação -->
+<div class="modal fade" id="resendConfirmationModal" tabindex="-1" aria-labelledby="resendConfirmationModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="resendConfirmationModalLabel">Reenviar e-mail de confirmação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with url: resend_confirmation_path, method: :post do |form| %>
+          <div class="field mb-3">
+            <%= form.label :email, "Digite seu e-mail de cadastro:", class: "form-label" %>
+            <%= form.email_field :email, required: true, class: "form-control" %>
+          </div>
+          <div class="d-grid">
+            <%= form.submit "Reenviar confirmação", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,50 @@
+<h2>Meu Perfil</h2>
+
+<div class="profile-info">
+  <div class="field">
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </div>
+
+  <div class="field">
+    <strong>Nome:</strong>
+    <%= @user.first_name %>
+  </div>
+
+  <div class="field">
+    <strong>Sobrenome:</strong>
+    <%= @user.last_name %>
+  </div>
+
+  <div class="field">
+    <strong>Data de cadastro:</strong>
+    <%= l @user.created_at, format: :long %>
+  </div>
+
+  <div class="field">
+    <strong>Último login:</strong>
+    <%= @user.last_login ? l(@user.last_login, format: :long) : "Primeiro acesso" %>
+  </div>
+</div>
+
+<div class="actions">
+  <%= link_to "Editar perfil", edit_user_path(@user), class: "btn btn-primary" %>
+</div>
+
+<div class="todo-lists-section">
+  <h3>Minhas listas de tarefas</h3>
+  <%= link_to "Nova lista", new_todo_list_path, class: "btn btn-success" %>
+  
+  <% if @user.todo_lists.any? %>
+    <ul class="todo-lists">
+      <% @user.todo_lists.each do |list| %>
+        <li>
+          <%= link_to list.title, todo_list_path(list) %>
+          <span class="item-count"><%= list.items.count %> itens</span>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Você ainda não tem listas de tarefas.</p>
+  <% end %>
+</div> 

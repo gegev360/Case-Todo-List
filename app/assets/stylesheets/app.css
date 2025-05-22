@@ -1,0 +1,143 @@
+/* Estilos gerais */
+.field {
+  margin-bottom: 1rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.field input[type="text"],
+.field input[type="email"],
+.field input[type="password"] {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.field small {
+  display: block;
+  margin-top: 0.25rem;
+  color: #6c757d;
+}
+
+.error-messages {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 0.25rem;
+  color: #721c24;
+}
+
+.actions {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.actions input[type="submit"] {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  cursor: pointer;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #0069d9;
+}
+
+.links {
+  margin-top: 1rem;
+}
+
+/* Estilos para itens da lista de tarefas */
+.completed {
+  text-decoration: line-through;
+  color: #6c757d;
+}
+
+/* Item concluído */
+li:has(.completed) {
+  background-color: rgba(25, 135, 84, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Classe alternativa para compatibilidade */
+.completed-item {
+  background-color: rgba(25, 135, 84, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* Estilos para o perfil do usuário */
+.profile-info {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+}
+
+.todo-lists-section {
+  margin-top: 2rem;
+}
+
+.todo-lists {
+  margin-top: 1rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.todo-lists li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.todo-lists li:last-child {
+  border-bottom: none;
+}
+
+.item-count {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-left: 0.5rem;
+}
+
+/* Estilos para botões */
+.btn-toolbar .btn {
+  min-width: 80px;
+}
+
+.list-group-item .btn {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+
+.list-group-item .btn:last-child {
+  margin-right: 0;
+}
+
+/* Estilo para descrição de item com quebra de texto */
+.list-group-item .flex-grow-1 {
+  word-break: break-word;
+  margin-right: 10px;
+}
+
+/* Estilos para botões de conclusão */
+.btn-success:hover {
+  background-color: #ffffff !important;
+  color: #198754 !important;
+  border-color: #198754 !important;
+}
+
+.btn-outline-success:hover {
+  background-color: #198754 !important;
+  color: #ffffff !important;
+} 

@@ -1,9 +1,9 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  title: MyString
-  description: MyText
+  id: 8
+  title: Lista de Compras
+  description: Itens para comprar na semana
 
 two:
-  title: MyString
-  description: MyText
+  id: 9
+  title: Tarefas de Trabalho
+  description: Pendências para completar

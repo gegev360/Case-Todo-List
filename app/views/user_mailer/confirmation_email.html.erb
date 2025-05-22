@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bem-vindo à Todo App, <%= @user.first_name %>!</h1>
+    <p>
+      Você se cadastrou na Todo App com o e-mail: <%= @user.email %>.<br>
+    </p>
+    <p>
+      Para confirmar seu cadastro, clique no link abaixo:
+    </p>
+    <p>
+      <%= link_to 'Confirmar meu cadastro', @confirmation_url %>
+    </p>
+    <p>
+      Este link expirará em 24 horas.
+    </p>
+    <p>
+      Obrigado por se juntar a nós!
+    </p>
+  </body>
+</html>

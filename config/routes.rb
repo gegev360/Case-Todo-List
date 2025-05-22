@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Rotas para redefinição de senha (colocadas no início para prioridade)
+  get 'esqueci-senha', to: 'password_resets#new', as: 'new_password_reset'
+  post 'password_resets', to: 'password_resets#create'
+  get 'redefinir-senha/:token', to: 'password_resets#edit', as: 'reset_password'
+  patch 'redefinir-senha/:token', to: 'password_resets#update'
+  
+  # Rotas para usuários
+  get 'cadastro', to: 'users#new', as: 'signup'
+  resources :users, only: [:create, :show, :edit, :update]
+  get 'confirmar-email/:token', to: 'users#confirm_email', as: 'confirm_email'
+  post 'reenviar-confirmacao', to: 'users#resend_confirmation', as: 'resend_confirmation'
+  
+  # Rotas para autenticação
+  get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+
   # Rotas para as listas de tarefas
   resources :todo_lists do
     # Rotas aninhadas para os itens de cada lista

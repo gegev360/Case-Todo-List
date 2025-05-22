@@ -1,2 +1,20 @@
-#!/usr/bin/env ruby
-exec "./bin/rails", "server", *ARGV
+#!/usr/bin/env bash
+
+if ! command -v foreman &> /dev/null
+then
+  echo "Foreman não está instalado. Instalando..."
+  gem install foreman
+fi
+
+# Se MailCatcher já estiver rodando, não precisamos iniciá-lo novamente
+if ! nc -z localhost 1080 &>/dev/null; then
+  echo "MailCatcher não está rodando. Será iniciado pelo Foreman."
+else
+  echo "MailCatcher já está rodando em http://localhost:1080"
+  # Modifica o Procfile para não iniciar o MailCatcher novamente
+  cat Procfile.dev | grep -v mailcatcher > Procfile.dev.tmp
+  mv Procfile.dev.tmp Procfile.dev
+fi
+
+# Inicia todos os processos definidos no Procfile.dev
+exec foreman start -f Procfile.dev "$@"

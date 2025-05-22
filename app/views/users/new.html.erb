@@ -1,0 +1,48 @@
+<h2>Cadastro</h2>
+
+<%= form_with model: @user, url: users_path do |form| %>
+  <% if @user.errors.any? %>
+    <div class="error-messages">
+      <h3><%= pluralize(@user.errors.count, "erro") %> impediu o cadastro:</h3>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email, required: true, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_name, "Nome" %>
+    <%= form.text_field :first_name, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name, "Sobrenome" %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password, "Senha" %>
+    <%= form.password_field :password, required: true %>
+    <small>Mínimo de 6 caracteres</small>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation, "Confirme a senha" %>
+    <%= form.password_field :password_confirmation, required: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Cadastrar" %>
+  </div>
+<% end %>
+
+<div class="links">
+  Já tem uma conta? <%= link_to "Fazer login", login_path %>
+</div> 

@@ -1,3 +1,7 @@
+# app/models/todo_list.rb
 class TodoList < ApplicationRecord
-  has_many :items, dependent: :destroy
-end
+    belongs_to :user
+    has_many :items, dependent: :destroy
+    
+    validates :title, presence: true
+  end

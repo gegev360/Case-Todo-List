@@ -1,0 +1,19 @@
+<%
+  completed_count = todo_list.items.where(completed: true).count
+  total_count = todo_list.items.count
+  
+  # Definir a cor da badge com base no progresso
+  badge_class = if total_count == 0
+                  "bg-secondary"  # Cinza se não houver itens
+                elsif completed_count == total_count
+                  "bg-success"    # Verde se todos estiverem concluídos
+                elsif completed_count == 0
+                  "bg-danger"     # Vermelho se nenhum estiver concluído
+                else
+                  "bg-primary"    # Azul para progresso parcial
+                end
+%>
+
+<span class="badge <%= badge_class %>" id="items-counter">
+  <%= completed_count %>/<%= total_count %> tarefas concluídas
+</span> 
