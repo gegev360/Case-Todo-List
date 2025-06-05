@@ -23,7 +23,7 @@ class User < ApplicationRecord
   
   def send_confirmation_email
     # Envio de email vai ser implementado com ActionMailer
-    UserMailer.confirmation_email(self).deliver_now
+    UserMailer.confirmation_email(self).deliver_later
   end
   
   def regenerate_confirmation_token
@@ -43,7 +43,7 @@ class User < ApplicationRecord
   end
   
   def send_password_reset_email
-    UserMailer.password_reset(self).deliver_now
+    UserMailer.password_reset(self).deliver_later
   end
   
   private
