@@ -50,6 +50,10 @@ Rails.application.configure do
     port: 3000 
   }
 
+  # Permitir acesso via Localtunnel
+  config.hosts << "new-trams-kneel.loca.lt"
+  config.hosts << /.*\.loca\.lt/
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
