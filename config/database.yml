@@ -61,3 +61,7 @@ cable:
 queue:
   <<: *default
   database: todo_app_production
+
+cache:
+  <<: *default
+  database: todo_app_production
